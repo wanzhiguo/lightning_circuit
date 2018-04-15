@@ -7,6 +7,13 @@ This is a SNARK implementation using libsnark for the following:
 Read: given `H1`, `H2`, and `X`, prove you know `R1` and `R2` such that `R1` is the preimage of `H1`,
 `R2` is the preimage of `H2`, and `R1` is `R2 xor X`.
 
+## Notes on getting it running
+
+* 1. run get-libsnark to git pull libsnark from github.com, then checkout the version when lightning\_circuit was generated.
+``cd depsrc/libsnark/ && git checkout 746ade7ce0f30a6f6e612e50450294c8e7ade9a4``
+* 2. Comment ``git pull`` in get-libsnark and run get-libsnark again
+* 3. ``make && .\test``
+
 ## performance
 
 on my computer (Intel(R) Core(TM) i7-3770S CPU @ 3.10GHz):
