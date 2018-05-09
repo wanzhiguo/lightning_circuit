@@ -29,7 +29,7 @@ cd $DEPSRC
 
 [ ! -d libsnark ] && git clone $LIBSNARK_SRC libsnark
 cd libsnark
-git pull
+#git pull
 if [ "$CURVE" == "BN128" ]; then
     # TODO: submit -fPIC patch to ate-pairing
     INC_DIR=-fPIC ./prepare-depends.sh
