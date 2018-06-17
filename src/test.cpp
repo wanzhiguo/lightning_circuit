@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 
-#include "snark.hpp"
+#include "snark2.hpp"
 #include "test.h"
 
 using namespace libsnark;
@@ -15,9 +15,9 @@ int main()
     auto keypair = generate_keypair<default_r1cs_ppzksnark_pp>();
 
     // Run test vectors.
-    assert(run_test(keypair, false, false, false));
-    assert(!run_test(keypair, true, false, false));
-    assert(!run_test(keypair, false, true, false));
+//    assert(run_test(keypair, false, false, false));
+//    assert(!run_test(keypair, true, false, false));
+//    assert(!run_test(keypair, false, true, false));
     assert(!run_test(keypair, false, false, true));
 }
 
@@ -68,6 +68,7 @@ bool run_test(r1cs_ppzksnark_keypair<default_r1cs_ppzksnark_pp>& keypair,
     cout << "Proof generated!" << endl;
 
     if (!proof) {
+        cout << "Proof false!!!" << endl;
         return false;
     } else {
         if (goofy_verification_inputs) {

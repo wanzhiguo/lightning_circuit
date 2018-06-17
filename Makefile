@@ -10,8 +10,11 @@ LDLIBS += -L $(DEPINST)/lib -Wl,-rpath $(DEPINST)/lib -L . -lsnark -lgmpxx -lgmp
 LDLIBS += -lboost_system
 
 all:
-	$(CXX) -o test.o src/test.cpp -c $(CXXFLAGS)
-	$(CXX) -o test test.o $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
+	#$(CXX) -o test.o src/test.cpp -c $(CXXFLAGS)
+	#$(CXX) -o test test.o $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
+	$(CXX) -o cmp_test.o src/cmp_test.cpp -c $(CXXFLAGS)
+	$(CXX) -o cmp_test cmp_test.o $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
 
 clean:
 	$(RM) test.o test
+	$(RM) cmp_test.o cmp_test
