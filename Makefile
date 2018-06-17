@@ -14,6 +14,8 @@ all:
 	#$(CXX) -o test test.o $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
 	$(CXX) -o cmp_test.o src/cmp_test.cpp -c $(CXXFLAGS)
 	$(CXX) -o cmp_test cmp_test.o $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
+	#$(CXX) -o basic_test.o src/basic_test.cpp -c $(CXXFLAGS)
+	#$(CXX) -o basic_test basic_test.o $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
 
 clean:
 	$(RM) test.o test
