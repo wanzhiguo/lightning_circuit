@@ -11,6 +11,7 @@
 #include "libsnark/common/default_types/r1cs_ppzksnark_pp.hpp"
 //#include "libsnark/common/utils.hpp"
 #include <boost/optional.hpp>
+#include <boost/optional/optional_io.hpp>	// for output proof  --Zhiguo
 
 
 using namespace libsnark;
@@ -94,7 +95,7 @@ bool verify_proof(r1cs_ppzksnark_verification_key<ppzksnark_ppT> verification_ke
 {
     typedef Fr<ppzksnark_ppT> FieldT;
 
-    const r1cs_primary_input<FieldT> input();
+    const r1cs_primary_input<FieldT> input;
 
     return r1cs_ppzksnark_verifier_strong_IC<ppzksnark_ppT>(verification_key, input, proof);
 }
@@ -150,12 +151,10 @@ void test_comparison_gadget_with_instance(const size_t n, const size_t a, const 
             printf("result test for %zu > %zu\n", a, b);
         }
 	// generate proof
-        auto proof = generate_proof(keypair.pk, pb);
-	//r1cs_ppzksnark_prover<default_r1cs_ppzksnark_pp>(keypair.pk, pb.primary_input(), pb.auxiliary_input());
+        boost::optional<r1cs_ppzksnark_proof<ppzksnark_ppT>> proof = generate_proof(keypair.pk, pb);
+        cout<<"the final proof:"<<*proof<<endl;
         // verify proof
-//        const r1cs_primary_input<FieldT> input();
-//        cout<<"NULL input: "<<input<<endl;
-//	verify_proof(keypair.vk, proof);
+	verify_proof(keypair.vk, *proof);
 	//r1cs_ppzksnark_verifier_strong_IC<ppzksnark_ppT>(keypair.vk, input, *proof);
 
 
